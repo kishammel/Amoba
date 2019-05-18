@@ -42,4 +42,13 @@ void tictacgomb::event(genv::event ev)
 }
 
 
+int tictacgomb::get_oszlop()
+{
+    return this->oszlop;
+}
+int tictacgomb::get_sor()
+{
+   return this->sor;
+}
+
 

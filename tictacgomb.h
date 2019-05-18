@@ -13,7 +13,8 @@ class tictacgomb :public gomb
         void setbackground(colour *c);
          virtual void event(genv::event ev);
         virtual void draw();
-
+        int get_sor();
+        int get_oszlop();
 
 
 
@@ -24,7 +25,7 @@ class tictacgomb :public gomb
        int sor;
        int oszlop;
        colour* hatter;
-
+       char allapot=' ';
 
 
 };

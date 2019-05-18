@@ -19,6 +19,11 @@ class Jatekmester
         void set_coloro(colour*c);
         void set_colorx(colour*c);
         void set_n(int n);
+        colour* get_aktjatekos_szin();
+        char get_aktjatekos_jele();
+        void next_player();
+        bool ellenoriz(int x,int y);
+        bool check_poz(int b,int a);
 
     protected:
 
@@ -29,6 +34,8 @@ class Jatekmester
         int n;
         int X;
         int Y;
+        char aktjatekos;
+        bool jatek;
 
 
 };
