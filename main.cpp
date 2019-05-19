@@ -29,21 +29,26 @@ int main()
     szinek.push_back(new colour("Piros",250,0,0));
     szinek.push_back(new colour("Zöld",0,250,0));
     szinek.push_back(new colour("Kék",0,255,255));
+    szinek.push_back(new colour("Narancs",255,170,0));
     std::vector<widget*>widgetek;
-        legordulo * l1 = new legordulo(40,100,100,100);
+    legordulo * l1 = new legordulo(70,100,350,250);
+    gout<<move_to(105,225)<<color(255,255,255)<<genv::text("Player X");
     l1->hozzaad("PINK");
     l1->hozzaad("Piros");
     l1->hozzaad("Zöld");
     l1->hozzaad("Kék");
+    l1->hozzaad("Narancs");
 
-        legordulo * l2 = new legordulo(40,100,100,250);
+    legordulo * l2 = new legordulo(70,100,100,250);
+    gout<<move_to(355,225)<<color(255,255,255)<<genv::text("Player O");
     l2->hozzaad("PINK");
     l2->hozzaad("Piros");
     l2->hozzaad("Zöld");
     l2->hozzaad("Kék");
+    l2->hozzaad("Narancs");
 
-    gomb * g1 =new gomb(50,50,400,400);
-    szamlalo * s1=new szamlalo(70,50,180,200, 15, 30);
+    gomb * g1 =new gomb(50,50,230,250);
+    szamlalo * s1=new szamlalo(70,50,215,150, 15, 30);
     Jatekmester *Jatek=new Jatekmester(atoi(s1->wertek().c_str()),X,Y);
     g1->set_padding(5,28);
     g1->set_text("Start");
@@ -55,48 +60,49 @@ int main()
 
 
 
-int page =0;
- while(gin >> ev)
+    int page =0;
+    while(gin >> ev)
     {
 
-switch (page)
-{
-case 0:  //menu
-    for(int i=0; i<widgetek.size(); ++i)
+        switch (page)
         {
-
+        case 0:  //menu
+            for(int i=0; i<widgetek.size(); ++i)
             {
 
-                widgetek[i]->event (ev);
-                widgetek[i]->draw();
-
-                if(g1->wertek() == "1")
                 {
-                    Jatek->set_coloro(szinek[l1->get_selected_index()]);
-                    Jatek->set_colorx(szinek[l2->get_selected_index()]);
-                    Jatek->set_n(s1->ertekes());
-                    page = 1;
 
+                    widgetek[i]->event (ev);
+                    widgetek[i]->draw();
+
+                    if(g1->wertek() == "1"&&l1->wertek()!=""&&l2->wertek()!="")
+                    {
+                        Jatek->set_coloro(szinek[l1->get_selected_index()]);
+                        Jatek->set_colorx(szinek[l2->get_selected_index()]);
+                        Jatek->set_n(s1->ertekes());
+                        page = 1;
+
+                    }
+                    if(g1->wertek()=="1"&&page==0)
+                    {
+                        gout<<move_to(160,100)<<color(255,0,0)<<genv::text("Valassz szineket a folytatashoz!");
+                    }
 
                 }
-
             }
+
+
+            break;
+        case 1:   //jatek
+            gout<<move_to(0,0)<<color(0,0,0)<<box_to(X,Y);
+            Jatek->draw();
+            Jatek->event(ev);
+
+
+
+            break;
+
         }
-
-    break;
-case 1:   //jatek
- gout<<move_to(0,0)<<color(0,0,0)<<box_to(X,Y);
-Jatek->draw();
-Jatek->event(ev);
-
-
-
-    break;
-case 2:
-
-
-    break;   //GameOver
-}
 
 
 

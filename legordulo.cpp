@@ -27,14 +27,14 @@ std::string legordulo::wertek()
     }
     else
     {
-    return "";
+        return "";
     }
 
 }
 
 int legordulo::get_selected_index()
 {
-return this->kivalasztott;
+    return this->kivalasztott;
 }
 
 
@@ -68,7 +68,7 @@ void legordulo::draw()
     }
 
 
- gout<<move_to(x,y+height/3)<< color(255,255,255)<<line_to(x+width*0.95,y+height/3);
+    gout<<move_to(x,y+height/3)<< color(255,255,255)<<line_to(x+width*0.95,y+height/3);
 
 
     gout<<move_to(x,y+height/3*2)<< color(255,255,255)<<line_to(x+width*0.95,y+height/3*2);
@@ -76,16 +76,18 @@ void legordulo::draw()
     gout<<move_to(x+width*0.8,y)<< color(255,156,0)<<box_to(x+width,y+height*0.5);
     gout<<move_to(x+width*0.8,y+height*0.5)<< color(255,156,0)<<box_to(x+width,y+height);
     gout<<move_to(x+width*0.8,y+height*0.50)<<color(0,0,0)<<line_to(x+width,y+height*0.5);
-    gout<<move_to(x+width*0.8,y+height*0.75)<<color(0,0,0)<<text("v");
-    gout<<move_to(x+width*0.8,y+height*0.25)<<color(0,0,0)<<text((char)94);
+    gout<<move_to(x+width*0.84,y+height*0.75)<<color(0,0,0)<<text("v");
+    gout<<move_to(x+width*0.84,y+height*0.25)<<color(0,0,0)<<text((char)94);
     gout<<move_to(x,y)<<color(255,255,255)<<box_to(x+width,y+height*(-0.2));
 
-    if(this->kivalasztott>=0)
-       {
-           gout<<move_to(x+width*0.4,y+height*(-0.05))<<color(0,0,0)<<text(this->lista[this->kivalasztott]);
-       }
 
-   for (int i=0; i<this->meret; ++i)
+
+    if(this->kivalasztott>=0)
+    {
+        gout<<move_to(x+width*0.15,y+height*(-0.05))<<color(0,0,0)<<text(this->lista[this->kivalasztott]);
+    }
+
+    for (int i=0; i<this->meret; ++i)
     {
         gout<<move_to(x,y+height*0.20+((i*height)/3))<<color(255,255,255)<<text(lista[elso+i]);
     }
@@ -153,7 +155,7 @@ void legordulo::event(genv::event ev)
     {
         if(clickCheck(width*0.8, width, height*0.5, height, ev.pos_x, ev.pos_y)== true)
         {
-            if(elso+this->meret<=this->maxi)
+            if(elso+this->meret<=this->maxi-1)
             {
                 this->elso=this->elso+1;
             }

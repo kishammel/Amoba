@@ -67,7 +67,7 @@ void szamlalo::fel()
 
 void szamlalo::le()
 {
-   if (this->ertek-1>=this->mini)
+    if (this->ertek-1>=this->mini)
     {
         this->ertek--;
     }

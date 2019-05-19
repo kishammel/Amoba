@@ -5,21 +5,21 @@
 
 class colour
 {
-    public:
-        colour(std::string nev,unsigned int r,unsigned int g,unsigned int b);
-        virtual ~colour();
-        int get_red();
-        int get_green();
-        int get_blue();
+public:
+    colour(std::string nev,unsigned int r,unsigned int g,unsigned int b);
+    virtual ~colour();
+    int get_red();
+    int get_green();
+    int get_blue();
 
 
-    protected:
+protected:
 
-    private:
-      unsigned  int red;
-       unsigned int green;
-       unsigned int blue;
-       std::string nev;
+private:
+    unsigned  int red;
+    unsigned int green;
+    unsigned int blue;
+    std::string nev;
 };
 
 #endif // COLOUR_H

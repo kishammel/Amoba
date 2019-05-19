@@ -27,14 +27,14 @@ void gomb::draw()
 
 std::string gomb::wertek()
 {
-if (state == 1)
-{
-    return "1";
-}
-else
-{
-    return "0";
-}
+    if (state == 1)
+    {
+        return "1";
+    }
+    else
+    {
+        return "0";
+    }
 
 }
 
@@ -71,5 +71,6 @@ void gomb::set_text(std::string s)
 
 std::string gomb::get_text()
 {
-  return this->text;
+    return this->text;
 }
+
