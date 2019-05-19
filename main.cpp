@@ -25,33 +25,40 @@ int main()
 
     event ev;
     std::vector<colour*>szinek;
+
     szinek.push_back(new colour("PINK",255,105,180));
     szinek.push_back(new colour("Piros",250,0,0));
-    szinek.push_back(new colour("Zöld",0,250,0));
     szinek.push_back(new colour("Kék",0,255,255));
+    szinek.push_back(new colour("Zöld",0,250,0));
     szinek.push_back(new colour("Narancs",255,170,0));
+
     std::vector<widget*>widgetek;
+
     legordulo * l1 = new legordulo(70,100,350,250);
-    gout<<move_to(105,225)<<color(255,255,255)<<genv::text("Player X");
+    gout<<move_to(355,225)<<color(255,255,255)<<genv::text("Player O");
     l1->hozzaad("PINK");
     l1->hozzaad("Piros");
-    l1->hozzaad("Zöld");
     l1->hozzaad("Kék");
+    l1->hozzaad("Zöld");
     l1->hozzaad("Narancs");
 
     legordulo * l2 = new legordulo(70,100,100,250);
-    gout<<move_to(355,225)<<color(255,255,255)<<genv::text("Player O");
+    gout<<move_to(105,225)<<color(255,255,255)<<genv::text("Player X");
     l2->hozzaad("PINK");
     l2->hozzaad("Piros");
-    l2->hozzaad("Zöld");
     l2->hozzaad("Kék");
+    l2->hozzaad("Zöld");
     l2->hozzaad("Narancs");
 
     gomb * g1 =new gomb(50,50,230,250);
-    szamlalo * s1=new szamlalo(70,50,215,150, 15, 30);
+
+    szamlalo * s1=new szamlalo(70,50,215,150,15, 30);
+    gout<<move_to(210,145)<<color(255,255,255)<<genv::text("Pálya méret");
+
     Jatekmester *Jatek=new Jatekmester(atoi(s1->wertek().c_str()),X,Y);
     g1->set_padding(5,28);
     g1->set_text("Start");
+
     widgetek.push_back(l1);
     widgetek.push_back(l2);
     widgetek.push_back(g1);
@@ -97,13 +104,20 @@ int main()
             gout<<move_to(0,0)<<color(0,0,0)<<box_to(X,Y);
             Jatek->draw();
             Jatek->event(ev);
+            if(Jatek->get_jatek() || Jatek->get_dontetlen())
+            {
+
+                if (ev.type==ev_key && ev.keycode== key_escape)
+                {
+                    return 0;
+                }
+            }
 
 
 
             break;
 
         }
-
 
 
 

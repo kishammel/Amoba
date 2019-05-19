@@ -25,6 +25,8 @@ public:
     bool ellenoriz(int x,int y);
     bool check_poz(int a,int b);
     void full_table();
+    bool get_dontetlen();
+    bool get_jatek();
 
 protected:
 
@@ -38,6 +40,7 @@ private:
     char aktjatekos;
     bool jatek;
     int uresek;
+    bool dontetlen;
 
 
 };

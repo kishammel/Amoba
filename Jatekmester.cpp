@@ -15,7 +15,8 @@ Jatekmester::Jatekmester(int n,int X,int Y)
     }
     this->aktjatekos='x';
     this->jatek=true;
-    this->uresek=n*n+1;
+    this->uresek=n*n-1;
+    this->dontetlen=false;
 }
 
 Jatekmester::~Jatekmester()
@@ -95,10 +96,11 @@ void Jatekmester::event(genv::event ev)
                         if(ellenoriz(i,j))
                         {
                             this->jatek=false;
-                            gout<<move_to(10,this->Y+20)<<color(255,215,0)<<genv::text("Gratulálok "+dd.str()+", te nyertél!");
+                            gout<<move_to(10,this->Y+20)<<color(255,215,0)<<genv::text("Gratulálok "+dd.str()+", te nyertél! Bezáráshoz nyomj esc-et.");
                         }
-                        full_table();
 
+
+                        full_table();
 
                         this->next_player();
                         this->uresek-=1;
@@ -229,9 +231,26 @@ void Jatekmester::full_table()
     if (this->uresek==0)
     {
         jatek=false;
-        genv::gout<<genv::move_to(10,this->Y+20)<<genv::color(255,215,0)<<genv::text("A jatek dontetlennel vegzodott!");
+        dontetlen=true;
+        genv::gout<<genv::move_to(10,this->Y+20)<<genv::color(255,215,0)<<genv::text("A játék döntetlennel végzödött! Bezáráshoz nyomj esc-et.");
     }
 
+}
+
+bool Jatekmester::get_dontetlen()
+{
+    if (this->dontetlen==true)
+    {
+        return true;
+    }
+
+}
+bool Jatekmester::get_jatek()
+{
+    if(this->jatek==false)
+    {
+        return true;
+    }
 }
 
 
